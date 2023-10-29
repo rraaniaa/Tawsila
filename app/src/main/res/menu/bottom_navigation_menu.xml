@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <item
+        android:id="@+id/bottom_home"
+        android:title="home"
+        android:icon="@drawable/home"
+        />
+    <item
+        android:id="@+id/bottom_trajet"
+        android:title="Mes Trajet"
+        android:icon="@drawable/trajet"/>
+
+    <item
+        android:title="" />
+
+    <item
+        android:id="@+id/bottom_notification"
+        android:title="notification"
+        android:icon="@drawable/notifications"/>
+
+    <item
+        android:id="@+id/bottom_menu"
+        android:title="menu"
+        android:icon="@drawable/menu"/>
+
+
+
+
+
+
+
+
+
+
+
+</menu>

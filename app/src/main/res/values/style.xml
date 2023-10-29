@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="circularShape">
+        <item name="cornerSize">50%</item> <!-- Définit le coin à 50% de la taille -->
+    </style>
+    <style name="BottomNavThem" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/black</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tawsila</string>
+    <string name="home_icon_description">Home Icon</string>
+    <string name="add_button_description">Add Button</string>
+    <string name="open_nav">Open Navigation</string>
+    <string name="close_nav">Close Navigation</string>
+
+</resources>
