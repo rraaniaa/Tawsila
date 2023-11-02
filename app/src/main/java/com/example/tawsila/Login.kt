@@ -18,8 +18,15 @@ class Login : AppCompatActivity() {
 
         val goButton = findViewById<Button>(R.id.goButton)
         goButton.setOnClickListener {
-            // Start the target activity when the button is clicked
+            // Start the target activity when the "Go" button is clicked
             val intent = Intent(this, Interface::class.java)
+            startActivity(intent)
+        }
+
+        val goSignupButton = findViewById<Button>(R.id.goSignup)
+        goSignupButton.setOnClickListener {
+            // Start the SignUp activity when the "goSignup" button is clicked
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
     }
