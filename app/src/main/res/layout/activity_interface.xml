@@ -33,6 +33,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <!-- RecyclerView for the list of images -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="?attr/actionBarSize" />
+
                 <!-- BottomAppBar -->
                 <com.google.android.material.bottomappbar.BottomAppBar
                     android:id="@+id/bottomAppBar"
@@ -42,9 +49,11 @@
                     android:backgroundTint="@color/bleu"
                     app:contentInsetStart="0dp"
                     app:fabCradleMargin="12dp"
-                    app:fabCradleRoundedCornerRadius="60dp">
+                    app:fabCradleRoundedCornerRadius="60dp"
+                    app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior">
 
-                    <!-- BottomNavigationView -->
+
+                <!-- BottomNavigationView -->
                     <com.google.android.material.bottomnavigation.BottomNavigationView
                         android:id="@+id/bottom_navigation"
                         android:layout_width="match_parent"
@@ -55,7 +64,8 @@
                         app:itemIconTint="@color/bottomnavigation_color_state"
                         app:itemTextColor="@color/bottomnavigation_color_state"
                         app:labelVisibilityMode="labeled"
-                        app:menu="@menu/bottom_navigation_menu" />
+                        app:menu="@menu/bottom_navigation_menu"
+                         />
 
                 </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -64,12 +74,15 @@
                     android:id="@+id/fab"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/bleu"
+                    android:backgroundTint="@color/fab_color_selection"
                     android:src="@drawable/add"
                     app:layout_anchor="@id/bottomAppBar"
+                    app:layout_anchorGravity="center"
                     app:maxImageSize="40dp"
-                    app:shapeAppearanceOverlay="@style/circularShape" />
-
+                    android:clickable="true"
+                    app:shapeAppearanceOverlay="@style/circularShape"
+                    app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         </FrameLayout>

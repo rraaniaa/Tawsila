@@ -5,9 +5,11 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
     <style name="circularShape">
-        <item name="cornerSize">50%</item> <!-- Définit le coin à 50% de la taille -->
+        <item name="cornerSize">30%</item> <!-- Définit le coin à 50% de la taille -->
     </style>
     <style name="BottomNavThem" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/black</item>
     </style>
+    <!-- Style for the AppBarLayout overlay -->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 </resources>

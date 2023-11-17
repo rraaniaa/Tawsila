@@ -44,5 +44,7 @@ dependencies {
     testImplementation ("junit:junit:4.13.2") // Keep this version
     androidTestImplementation ("androidx.test.ext:junit:1.1.5") // Keep this version
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1") // Keep this version
-    implementation ("com.google.android.material:material:1.1.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.3.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.2.0")
+
 }
