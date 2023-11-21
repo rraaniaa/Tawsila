@@ -10,7 +10,10 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
+import com.google.gson.JsonParseException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -47,21 +50,16 @@ class Login : AppCompatActivity() {
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
 
-            // Create an instance of AuthRequest
-            val authRequest = AuthRequest(username, password)
-
-            // Make the API call for authentication
-            val loginCall: Call<String> = microserviceApi.getToken(authRequest)
-            // Check if email is in a valid format
+            // Check if username is empty
             if (username.isEmpty()) {
                 usernameLayout.error = "Enter a username"
                 return@setOnClickListener
             } else {
-                // Clear the error if email is valid
+                // Clear the error if username is valid
                 usernameLayout.error = null
             }
 
-            // Check if password not empty
+            // Check if password is not empty
             if (password.isEmpty()) {
                 passwordLayout.error = "Passwords cannot be empty"
                 return@setOnClickListener
@@ -69,16 +67,38 @@ class Login : AppCompatActivity() {
                 // Clear the error if passwords match
                 passwordLayout.error = null
             }
-            loginCall.enqueue(object : Callback<String> {
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    if (response.isSuccessful) {
-                        val token: String? = response.body()
-                        // Handle the successful login, maybe store the token for future requests
-                        Log.d("Login", "Login successful. Token: $token")
-                        // Navigate to the next activity since login was successful
-                        val intent = Intent(this@Login, Interface::class.java)
-                        startActivity(intent)
 
+            // Create an instance of AuthRequest
+            val authRequest = AuthRequest(username, password)
+
+            // Make the API call for authentication
+            val loginCall: Call<Map<String, Any>> = microserviceApi.getToken(authRequest)
+
+            // Inside your Login activity
+            // Inside your Login activity
+            loginCall.enqueue(object : Callback<Map<String, Any>> {
+                override fun onResponse(call: Call<Map<String, Any>>, response: Response<Map<String, Any>>) {
+                    if (response.isSuccessful) {
+                        val data: Map<String, Any>? = response.body()
+
+                        // Log the entire response map
+                        Log.d("Login", "Response Map: $data")
+
+                        // Check if the response contains the token and user ID
+                        val token = data?.get("token") as? String
+                        val userId = (data?.get("userId") as? Number)?.toLong()
+
+                        if (token != null && userId != null) {
+                            // Navigate to the next activity since login was successful
+                            val intent = Intent(this@Login, profil_image::class.java)
+                            intent.putExtra("USER_TOKEN", token)
+                            intent.putExtra("USER_ID", userId)
+                            startActivity(intent)
+                        } else {
+                            // Handle missing token or user ID
+                            Log.e("Login", "Token or user ID not found in the response")
+                            // Handle other cases as needed
+                        }
                     } else {
                         // Handle unsuccessful login
                         val errorBody = response.errorBody()?.string()
@@ -92,13 +112,15 @@ class Login : AppCompatActivity() {
                     }
                 }
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
+                override fun onFailure(call: Call<Map<String, Any>>, t: Throwable) {
                     // Handle network or other errors during login
                     Log.e("Login", "Login failed: ${t.message}")
                     t.printStackTrace()
-               }
+                }
             })
+
         }
+
 
         val goSignupButton = findViewById<Button>(R.id.goSignup)
         goSignupButton.setOnClickListener {

@@ -6,16 +6,18 @@
 
     <item
         android:id="@+id/bottom_home"
-        android:title="home"
+        android:title="Accueil"
         android:icon="@drawable/home"
         />
     <item
         android:id="@+id/bottom_trajet"
-        android:title="Mes Trajet"
+        android:title="Mes Trajets"
         android:icon="@drawable/trajet"/>
 
     <item
-        android:title="" />
+        android:id="@+id/bottom_Add"
+        android:title="Proposer un trajet "
+        android:icon="@drawable/baseline_add_to_drive_24"/>
 
     <item
         android:id="@+id/bottom_notification"
@@ -23,9 +25,9 @@
         android:icon="@drawable/notifications"/>
 
     <item
-        android:id="@+id/bottom_menu"
-        android:title="menu"
-        android:icon="@drawable/menu"/>
+        android:id="@+id/bottom_profil"
+        android:title="Profil"
+        android:icon="@drawable/baseline_account_"/>
 
 
 

@@ -7,241 +7,110 @@
     tools:context=".driver_profile"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:padding="20dp"
-        android:background="#0074E4">
+        android:layout_height="280dp"
+        android:background="#0074E4"
+        android:gravity="center"
+        android:padding="40dp">
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/profile_image" />
+            android:layout_width="301dp"
+            android:layout_height="206dp"
+            android:src="@drawable/baseline_account_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@id/profile_image"
+            app:layout_constraintEnd_toEndOf="@id/profile_image"
+            app:srcCompat="@drawable/baseline_camera" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:layout_marginTop="0dp"
+        android:padding="20dp"
+        android:gravity="center">
+
+
+    <TextView
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/profile_image"
-            android:includeFontPadding="false"
-            android:text="Feres Adouani"
-            android:textSize="20sp"
-            android:textColor="#000"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:fontFamily="@font/bungee"
             android:text="feres adouani"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:layout_toRightOf="@+id/profile_image"
-            android:layout_below="@+id/full_name"
-            android:layout_marginLeft="10dp"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:layout_marginTop="-80dp">
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#2192fc"
-            android:layout_margin="10dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
+            android:textColor="@color/black"
+            android:textSize="30sp" />
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/payment_icon"
-                    android:layout_centerHorizontal="true"/>
-
-                <TextView
-                    android:id="@+id/payment_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="$123"
-                    android:textColor="@color/black"
-                    android:includeFontPadding="false"
-                    android:textSize="20sp"
-                    android:layout_centerInParent="true"/>
-
-                <TextView
-                    android:id="@+id/payment_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Balance"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_below="@id/payment_label"
-                    android:layout_centerHorizontal="true"/>
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#2192fc"
-            android:layout_margin="10dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="5dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/payment_icon"
-                    android:layout_centerHorizontal="true"/>
-
-                <TextView
-                    android:id="@+id/couv_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5"
-                    android:textColor="@color/black"
-                    android:includeFontPadding="false"
-                    android:textSize="20sp"
-                    android:layout_centerInParent="true"/>
-
-                <TextView
-                    android:id="@+id/couv_desc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Traget"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_below="@id/couv_label"
-                    android:layout_centerHorizontal="true"/>
-
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
             android:layout_marginBottom="10dp"
-            >
+            android:hint="Username">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/profile_image"
                 android:drawablePadding="10dp"
-                android:text="Feres Adouani"/>
+                android:text="Feres Adouani" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
             android:layout_marginBottom="10dp"
-            >
+            android:hint="Email">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/profile_image"
                 android:drawablePadding="10dp"
-                android:text="email@domaine"/>
+                android:text="email@domaine" />
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"
             android:layout_marginBottom="10dp"
-            >
+            android:hint="Password">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/profile_image"
                 android:drawablePadding="10dp"
-                android:text="+216 xx xxx xxx"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:layout_marginBottom="10dp"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/profile_image"
-                android:drawablePadding="10dp"
-                android:text="Password"/>
+                android:text="Password" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update"
-            android:backgroundTint="@color/bleu"/>
+            android:backgroundTint="@color/bleu"
+            android:text="Update" />
 
     </LinearLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_container" >
-
-        <!-- CoordinatorLayout for BottomAppBar -->
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!-- BottomAppBar -->
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:id="@+id/bottomAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_gravity="bottom"
-                android:backgroundTint="@color/bleu"
-                app:contentInsetStart="0dp"
-                app:fabCradleMargin="12dp"
-                app:fabCradleRoundedCornerRadius="60dp">
-
-                <!-- BottomNavigationView -->
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottom_navigation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:theme="@style/BottomNavThem"
-                    app:elevation="0dp"
-                    app:itemIconTint="@color/bottomnavigation_color_state"
-                    app:itemTextColor="@color/bottomnavigation_color_state"
-                    app:labelVisibilityMode="labeled"
-                    app:menu="@menu/bottom_navigation_menu" />
-
-            </com.google.android.material.bottomappbar.BottomAppBar>
-
-            <!-- FloatingActionButton -->
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/bleu"
-                android:src="@drawable/add"
-                app:layout_anchor="@id/bottomAppBar"
-                app:maxImageSize="40dp"
-                app:shapeAppearanceOverlay="@style/circularShape" />
-
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    </FrameLayout>
 
 
 </LinearLayout>

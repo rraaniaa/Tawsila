@@ -5,5 +5,6 @@ data class UserDTO(
     val name: String = "",
     val email: String = "",
     val password: String = "",
+    val profileImage: ByteArray? = null,
     val roleName: String = ""
 )

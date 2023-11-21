@@ -75,7 +75,7 @@ class SignUp : AppCompatActivity() {
             }
 
             // Example: Register a new user
-            val newUserDTO = UserDTO(name, email, password, gender)
+            val newUserDTO = UserDTO(name, email, password,null, gender)
             val registerCall: Call<String> = microserviceApi.registerUser(newUserDTO)
 
             registerCall.enqueue(object : Callback<String> {

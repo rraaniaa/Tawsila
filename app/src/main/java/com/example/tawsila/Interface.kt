@@ -58,27 +58,6 @@ class Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = Adapter(imageList)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
-
-        var isFabClicked = false
-
-        fab.setOnClickListener {
-            // Change the background color to white only if not already clicked
-            if (!isFabClicked) {
-                fab.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.white))
-                isFabClicked = true
-
-                // Uncheck other items in BottomNavigationView
-                for (i in 0 until bottomNavigationView.menu.size()) {
-                    bottomNavigationView.menu.getItem(i).isChecked = false
-                }
-
-                // Add any other logic or actions you want to perform on click
-            }
-        }
-
-
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
