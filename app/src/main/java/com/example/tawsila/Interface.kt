@@ -59,12 +59,17 @@ class Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         recyclerView.adapter = Adapter(imageList)
 
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        val userId: Long = intent.getLongExtra("USER_ID", -1)
+
         when (item.itemId) {
            // R.id.nav_home -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, HomeFragment()).commit()
             R.id.nav_settings -> {
                     val intent = Intent(this, driver_profile::class.java)
-            startActivity(intent)}
+                    intent.putExtra("USER_ID", userId)
+
+                startActivity(intent)}
           //  R.id.nav_share -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ShareFragment()).commit()
          //   R.id.nav_about -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container, AboutFragment()).commit()
            R.id.nav_logout -> Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show()

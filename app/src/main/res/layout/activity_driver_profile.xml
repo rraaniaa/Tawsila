@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,9 +34,7 @@
             app:layout_constraintEnd_toEndOf="@id/profile_image"
             app:srcCompat="@drawable/baseline_camera" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,13 +43,11 @@
         android:padding="20dp"
         android:gravity="center">
 
-
-    <TextView
+        <TextView
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/bungee"
-            android:text="feres adouani"
             android:textColor="@color/black"
             android:textSize="30sp" />
 
@@ -69,11 +66,11 @@
             android:hint="Username">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/profile_image"
-                android:drawablePadding="10dp"
-                android:text="Feres Adouani" />
+                android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -83,34 +80,34 @@
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/profile_image"
-                android:drawablePadding="10dp"
-                android:text="email@domaine" />
+                android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="Password">
+            app:passwordToggleEnabled="true"
+            android:hint="Add New Password">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/profile_image"
-                android:drawablePadding="10dp"
-                android:text="Password" />
+                android:drawablePadding="10dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/update"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/bleu"
             android:text="Update" />
 
     </LinearLayout>
-
-
 </LinearLayout>

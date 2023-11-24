@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Login : AppCompatActivity() {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.1.18:8080")
+        .baseUrl("http://169.254.142.86:8080")
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .build()
 
@@ -42,7 +42,6 @@ class Login : AppCompatActivity() {
 
         val usernameEditText = usernameLayout.findViewById<TextInputEditText>(R.id.editTextUsername)
         val passwordEditText = passwordLayout.findViewById<TextInputEditText>(R.id.editTextPassword)
-
 
 
         val loginButton = findViewById<Button>(R.id.goButton)
@@ -89,12 +88,40 @@ class Login : AppCompatActivity() {
                         val userId = (data?.get("userId") as? Number)?.toLong()
 
                         if (token != null && userId != null) {
-                            // Navigate to the next activity since login was successful
-                            val intent = Intent(this@Login, profil_image::class.java)
-                            intent.putExtra("USER_TOKEN", token)
-                            intent.putExtra("USER_ID", userId)
-                            startActivity(intent)
-                        } else {
+                            // Make the API call to get user information
+                            val getUserInfoCall: Call<UserDTO> = microserviceApi.getUserInfo(userId)
+                            getUserInfoCall.enqueue(object : Callback<UserDTO> {
+                                override fun onResponse(call: Call<UserDTO>, response: Response<UserDTO>) {
+                                    if (response.isSuccessful) {
+                                        val user = response.body()
+
+                                        // Check if the profile image is null
+                                        if (user?.profileImage == null) {
+                                            // If the profile image is null, navigate to profil_image
+                                            val intent = Intent(this@Login, profil_image::class.java)
+                                            intent.putExtra("USER_TOKEN", token)
+                                            intent.putExtra("USER_ID", userId)
+                                            startActivity(intent)
+                                        } else {
+                                            // If the profile image is not null, navigate to InterfaceActivity
+                                            val intent = Intent(this@Login, Interface::class.java)
+                                            intent.putExtra("USER_TOKEN", token)
+                                            intent.putExtra("USER_ID", userId)
+                                            startActivity(intent)
+                                        }
+                                    } else {
+                                        // Handle the case where retrieving user information fails
+                                        Log.e("Login", "Failed to retrieve user information. Code: ${response.code()}")
+                                        Log.e("Login", "Response: ${response.raw()}")
+                                    }
+                                }
+
+                                override fun onFailure(call: Call<UserDTO>, t: Throwable) {
+                                    // Handle network or other errors when getting user information
+                                    Log.e("Login", "Network error: ${t.message}", t)
+                                }
+                            })
+                        }  else {
                             // Handle missing token or user ID
                             Log.e("Login", "Token or user ID not found in the response")
                             // Handle other cases as needed
