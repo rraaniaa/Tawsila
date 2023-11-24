@@ -18,31 +18,64 @@
         android:fontFamily="@font/bungee"
         android:textSize="20sp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-    android:layout_marginBottom="20dp"/>
+        android:layout_marginTop="30dp" />
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="365dp"
-        android:layout_height="277dp"
-        app:srcCompat="@drawable/baseline_account_" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:gravity="center"
+        android:padding="20dp">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:src="@drawable/baseline_account_"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="@id/profile_image"
+            app:layout_constraintEnd_toEndOf="@id/profile_image"
+            app:srcCompat="@drawable/baseline_camera" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Title -->
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_anchor="@+id/imageView2"
-        app:layout_anchorGravity="end|bottom"
-        app:srcCompat="@drawable/baseline_camera" />
-    <!-- Button to save the image -->
+        android:text="Merci de prendre une photo "
+        android:fontFamily="@font/antic"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/Ignorer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="Ignorer cette étape"
+        android:textColor="@color/bleu"
+        android:textSize="18dp" />
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save Image"
+        android:textColor="@color/bleu"
+        android:textSize="20dp"
+        android:backgroundTint="@color/white"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="140dp"
+        android:background="@drawable/custom_button_background" />
 
 </LinearLayout>

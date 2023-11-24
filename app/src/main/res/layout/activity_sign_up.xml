@@ -130,8 +130,8 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:text="Already have an account ? LogIn"
-            android:textSize="15dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
 
     </LinearLayout>

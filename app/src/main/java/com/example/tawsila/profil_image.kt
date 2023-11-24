@@ -72,7 +72,7 @@ class profil_image : AppCompatActivity() {
         setContentView(R.layout.profil_image)
 
         // Initialize your ImageView
-        imgProfile = findViewById(R.id.imageView2)
+        imgProfile = findViewById(R.id.profile_image)
 
         // Set onClickListener for the FloatingActionButton
         val uploadButton: FloatingActionButton = findViewById(R.id.floatingActionButton4)
@@ -98,7 +98,7 @@ class profil_image : AppCompatActivity() {
                 // Call the API to upload the image
                 uploadImage(userId, selectedImageUri)
                 // After saving, navigate to another activity or fragment
-                val intent = Intent(this, driver_profile::class.java)
+                val intent = Intent(this, Interface::class.java)
                 // You can put extra data in the intent if needed
                  intent.putExtra("USER_ID", userId)
                 startActivity(intent)
@@ -107,9 +107,15 @@ class profil_image : AppCompatActivity() {
             }
         }
 
+        val ignorer = findViewById<Button>(R.id.Ignorer)
+        ignorer.setOnClickListener {
+            val userId: Long = intent.getLongExtra("USER_ID", -1)
+            val intent = Intent(this, Interface::class.java)
+            intent.putExtra("USER_ID", userId)
+            startActivity(intent)
+        }
+
     }
-
-
 
     private fun uploadImage(userId: Long, fileUri: Uri) {
         // Check if selectedImageUri has been initialized
@@ -158,41 +164,10 @@ class profil_image : AppCompatActivity() {
         }
     }
 
-   /** private fun getFilePath(context: Context, uri: Uri): String {
-        var result: String? = null
-
-        try {
-            val contentResolver: ContentResolver = context.contentResolver
-
-            // Utilisez DocumentFile pour obtenir le chemin du fichier
-            val documentFile = DocumentFile.fromSingleUri(context, uri)
-
-            // Vérifiez si le DocumentFile est null
-            if (documentFile != null && documentFile.exists()) {
-                Log.d("profil_image", "DocumentFile URI: $uri")
-                Log.d("profil_image", "DocumentFile Name: ${documentFile.name}")
-                Log.d("profil_image", "DocumentFile Type: ${documentFile.type}")
-
-                // Ouvrez le flux de données du fichier à partir du DocumentFile
-                val inputStream: InputStream? = contentResolver.openInputStream(uri)
-
-                // Utilisez l'inputStream pour obtenir le contenu du fichier
-                // Vous pouvez également lire le contenu du fichier ici si nécessaire
-
-                // Fermez l'inputStream
-                inputStream?.close()
-            }
-
-        } catch (e: Exception) {
-            Log.e("profil_image", "Error getting file path: ${e.message}")
-        }
-
-        return result ?: ""
-    }
-   **/
 
 
     companion object {
         private const val READ_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 123
     }
+
 }
