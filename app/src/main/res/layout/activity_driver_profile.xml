@@ -108,6 +108,14 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/bleu"
             android:text="Update" />
+        <Button
+            android:id="@+id/ignorer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="Ignorer !" />
 
     </LinearLayout>
+
 </LinearLayout>

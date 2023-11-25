@@ -34,16 +34,11 @@ class Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         setContentView(R.layout.activity_interface)
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+
+        // Call the function to set up userId and BottomNavigationView
+        setUpBottomNavigationView()
 
         drawerLayout = findViewById(R.id.drawer_layout)
-        val navigationView = findViewById<NavigationView>(R.id.nav_view)
-        navigationView.setNavigationItemSelectedListener(this)
-
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
         // Sample data for testing
         val imageList = listOf(
             ImageItem(R.drawable.ic_launcher_foreground, "Image 1"),
@@ -86,4 +81,51 @@ class Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             super.onBackPressed()
         }
     }
+    private fun setUpBottomNavigationView() {
+        val  userId = intent.getLongExtra("USER_ID", -1)
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_home
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_home -> {
+                    val intent = Intent(this, Interface::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_trajet -> {
+                    val intent = Intent(this, Profil::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_Add -> {
+                    val intent = Intent(this, profil_image::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_notification -> {
+                    val intent = Intent(this, profil_image::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_profil -> {
+                    val intent = Intent(this, Profil::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
 }

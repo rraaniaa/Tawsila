@@ -16,7 +16,7 @@
 
     <item
         android:id="@+id/bottom_Add"
-        android:title="Proposer un trajet "
+        android:title="Pro.Trajet"
         android:icon="@drawable/baseline_add_to_drive_24"/>
 
     <item

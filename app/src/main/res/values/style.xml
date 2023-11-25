@@ -9,6 +9,7 @@
     </style>
     <style name="BottomNavThem" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/black</item>
+
     </style>
     <!-- Style for the AppBarLayout overlay -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>

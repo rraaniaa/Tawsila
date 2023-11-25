@@ -1,6 +1,7 @@
 package com.example.tawsila
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
@@ -73,8 +74,7 @@ class driver_profile : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(R.layout.activity_driver_profile) // Assurez-vous que le nom du fichier de mise en page XML correspondant est correct.
-        // Vous pouvez ajouter du code supplémentaire pour configurer l'activité du profil du conducteur ici.
+        setContentView(R.layout.activity_driver_profile)
         // Initialize your ImageView
         val userId: Long = intent.getLongExtra("USER_ID", -1)
         Log.e("YourTag", "userID: ${userId}")
@@ -183,9 +183,9 @@ class driver_profile : AppCompatActivity() {
                             "User information updated successfully",
                             Toast.LENGTH_SHORT
                         ).show()
-                        refreshUserData(userId)
-                        // Optionally, navigate to another activity or perform other actions
-                        // Example: startActivity(Intent(this@YourActivity, AnotherActivity::class.java))
+                        val intent = Intent(this@driver_profile, Profil::class.java)
+                        intent.putExtra("USER_ID", userId)
+                        startActivity(intent)
                     } else {
                         // Handle failure
                         Toast.makeText(
@@ -208,22 +208,15 @@ class driver_profile : AppCompatActivity() {
         }
 
 
-
-
-    }
-    // Function to convert Bitmap image to base64 string
-   /* private fun convertImageToBase64(imageView: ImageView): String? {
-        val drawable = imageView.drawable
-        if (drawable is BitmapDrawable) {
-            val bitmap = drawable.bitmap
-            val byteArrayOutputStream = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
-            val byteArray: ByteArray = byteArrayOutputStream.toByteArray()
-            return Base64.encodeToString(byteArray, Base64.DEFAULT)
+        val ignorer = findViewById<Button>(R.id.ignorer)
+        ignorer.setOnClickListener {
+            val intent = Intent(this, Profil::class.java)
+            intent.putExtra("USER_ID", userId)
+            startActivity(intent)
         }
-        return null
+
     }
-*/
+/*
     // Function to refresh user data from the API
     private fun refreshUserData(userId: Long) {
         val getUserInfoCall: Call<UserDTO> = microserviceApi.getUserInfo(userId)
@@ -266,6 +259,8 @@ class driver_profile : AppCompatActivity() {
             }
         })
     }
+
+ */
     private fun uploadImage(userId: Long, fileUri: Uri) {
         // Check if selectedImageUri has been initialized
         if (!::selectedImageUri.isInitialized) {

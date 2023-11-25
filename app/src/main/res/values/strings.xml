@@ -5,11 +5,11 @@
     <string name="open_nav">Open Navigation</string>
     <string name="close_nav">Close Navigation</string>
 
-        <!-- Options du Spinner pour le genre -->
-        <string-array name="gender_options">
-            <item>DRIVER</item>
-            <item>CLIENT</item>
-        </string-array>
+    <!-- Options du Spinner pour le genre -->
+    <string-array name="gender_options">
+        <item>DRIVER</item>
+        <item>CLIENT</item>
+    </string-array>
     <string name="gender_hint">Click to chose Role</string>
 
 
