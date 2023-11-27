@@ -39,6 +39,9 @@
             android:name=".profil_image"
             android:exported="false" />
         <activity
+            android:name=".driver_trajet"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

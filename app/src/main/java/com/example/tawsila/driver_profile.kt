@@ -42,7 +42,7 @@ class driver_profile : AppCompatActivity() {
 
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://169.254.142.86:8080")
+        .baseUrl("http://192.168.1.69:8080")
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .build()
 

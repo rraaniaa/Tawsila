@@ -103,7 +103,7 @@ class Interface : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     true
                 }
                 R.id.bottom_Add -> {
-                    val intent = Intent(this, profil_image::class.java)
+                    val intent = Intent(this, driver_trajet::class.java)
                     intent.putExtra("USER_ID", userId)
                     startActivity(intent)
                     finish()
