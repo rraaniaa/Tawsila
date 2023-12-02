@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cell_width">50dp</dimen> <!-- Adjust the value as needed -->
+    <dimen name="cell_padding">5dp</dimen>
+    <dimen name="reg_width">80dp</dimen>
+</resources>
