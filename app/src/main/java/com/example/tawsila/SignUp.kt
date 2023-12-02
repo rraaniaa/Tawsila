@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class SignUp : AppCompatActivity() {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.1.69:8080")
+        .baseUrl(MicroServiceApi.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .build()
 

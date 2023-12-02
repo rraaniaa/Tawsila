@@ -1,12 +1,14 @@
 package com.example.tawsila
 
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,7 +26,7 @@ class driver_trajet: AppCompatActivity() {
     private lateinit var selectedTimeRetourTextView: TextView
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.1.69:8080")
+        .baseUrl(MicroServiceApi.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .build()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +39,9 @@ class driver_trajet: AppCompatActivity() {
         selectedTimeAllerTextView = findViewById(R.id.selectedTimeAllerTextView)
         selectedTimeRetourTextView = findViewById(R.id.selectedTimeRetourTextView)
         selectedTimeTextView = findViewById(R.id.selectedTimeAllerTextView) // Initialize selectedTimeTextView
+
+        // Call the function to set up userId and BottomNavigationView
+        setUpBottomNavigationView()
 
 // Add "Aller" and "Regulier" cells to the "Aller" layout
         allerCell = createCell("Aller", true)
@@ -242,4 +247,52 @@ class driver_trajet: AppCompatActivity() {
             selectedTimeRetourTextView.text = selectedTime
         }
     }
+    private fun setUpBottomNavigationView() {
+        val  userId = intent.getLongExtra("USER_ID", -1)
+
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.bottom_Add
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottom_home -> {
+                    val intent = Intent(this, Interface_driver::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_trajet -> {
+                    val intent = Intent(this, Profil::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_Add -> {
+                    val intent = Intent(this, profil_image::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_notification -> {
+                    val intent = Intent(this, Profil::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.bottom_profil -> {
+                    // Update userId if needed
+                    startActivity(Intent(applicationContext, Profil::class.java).apply {
+                        putExtra("USER_ID", userId)
+                    })
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
 }

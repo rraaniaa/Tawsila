@@ -23,7 +23,7 @@ class Profil : AppCompatActivity() {
     private lateinit var emailEditText: TextView
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.1.69:8080")
+        .baseUrl(MicroServiceApi.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .build()
 
@@ -127,7 +127,7 @@ class Profil : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_Add -> {
-                    val intent = Intent(this, profil_image::class.java)
+                    val intent = Intent(this, driver_trajet::class.java)
                     intent.putExtra("USER_ID", userId)
                     startActivity(intent)
                     finish()

@@ -4,7 +4,6 @@ import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -14,7 +13,9 @@ import retrofit2.http.Query
 
 interface MicroServiceApi {
 
-
+    companion object {
+        const val BASE_URL = "http://169.254.142.86:8080"
+    }
  //   @GET("/auth/all")
  //   fun getAllUsers(): Call<List<UserApp>>
 
