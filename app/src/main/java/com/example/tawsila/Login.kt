@@ -6,14 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
-import com.google.gson.JsonParseException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,18 +70,21 @@ class Login : AppCompatActivity() {
             val loginCall: Call<Map<String, Any>> = microserviceApi.getToken(authRequest)
 
             // Inside your Login activity
-            // Inside your Login activity
             loginCall.enqueue(object : Callback<Map<String, Any>> {
                 override fun onResponse(call: Call<Map<String, Any>>, response: Response<Map<String, Any>>) {
                     if (response.isSuccessful) {
                         val data: Map<String, Any>? = response.body()
-
                         // Log the entire response map
                         Log.d("Login", "Response Map: $data")
+
 
                         // Check if the response contains the token and user ID
                         val token = data?.get("token") as? String
                         val userId = (data?.get("userId") as? Number)?.toLong()
+
+                        // Access the role information correctly
+                        val roleData = data?.get("role") as? Map<String, Any>
+                        val role = roleData?.get("name") as? String
 
                         if (token != null && userId != null) {
                             // Make the API call to get user information
@@ -97,17 +96,36 @@ class Login : AppCompatActivity() {
 
                                         // Check if the profile image is null
                                         if (user?.profileImage == null) {
-                                            // If the profile image is null, navigate to profil_image
-                                            val intent = Intent(this@Login, profil_image::class.java)
-                                            intent.putExtra("USER_TOKEN", token)
-                                            intent.putExtra("USER_ID", userId)
-                                            startActivity(intent)
+                                                // If the profile image is null, navigate to profil_image
+                                                val intent =
+                                                    Intent(this@Login, profil_image::class.java)
+                                                intent.putExtra("USER_TOKEN", token)
+                                                intent.putExtra("USER_ID", userId)
+                                                startActivity(intent)
+
                                         } else {
-                                            // If the profile image is not null, navigate to InterfaceActivity
-                                            val intent = Intent(this@Login, Interface::class.java)
-                                            intent.putExtra("USER_TOKEN", token)
-                                            intent.putExtra("USER_ID", userId)
-                                            startActivity(intent)
+                                            if (role == "DRIVER") {
+                                                // If the profile image is not null, navigate to InterfaceActivity
+                                                val intent =
+                                                    Intent(this@Login, Interface_driver::class.java)
+                                                intent.putExtra("USER_TOKEN", token)
+                                                intent.putExtra("USER_ID", userId)
+                                                startActivity(intent)
+                                            } else if (role == "CLIENT"){
+                                                // If the profile image is not null, navigate to InterfaceActivity
+                                                val intent =
+                                                    Intent(this@Login, Interface_client::class.java)
+                                                intent.putExtra("USER_TOKEN", token)
+                                                intent.putExtra("USER_ID", userId)
+                                                startActivity(intent)
+                                            } else{
+                                                // If the profile image is not null, navigate to InterfaceActivity
+                                                val intent =
+                                                    Intent(this@Login, Interface_admin::class.java)
+                                                intent.putExtra("USER_TOKEN", token)
+                                                intent.putExtra("USER_ID", userId)
+                                                startActivity(intent)
+                                            }
                                         }
                                     } else {
                                         // Handle the case where retrieving user information fails

@@ -1,28 +1,18 @@
 package com.example.tawsila
 
 import android.app.Activity
-import android.content.ContentResolver
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.os.ParcelFileDescriptor
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.documentfile.provider.DocumentFile
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.GsonBuilder
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -31,7 +21,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
 import java.io.InputStream
 
 class profil_image : AppCompatActivity() {
@@ -98,7 +87,7 @@ class profil_image : AppCompatActivity() {
                 // Call the API to upload the image
                 uploadImage(userId, selectedImageUri)
                 // After saving, navigate to another activity or fragment
-                val intent = Intent(this, Interface::class.java)
+                val intent = Intent(this, Interface_driver::class.java)
                 // You can put extra data in the intent if needed
                  intent.putExtra("USER_ID", userId)
                 startActivity(intent)
@@ -110,7 +99,7 @@ class profil_image : AppCompatActivity() {
         val ignorer = findViewById<Button>(R.id.Ignorer)
         ignorer.setOnClickListener {
             val userId: Long = intent.getLongExtra("USER_ID", -1)
-            val intent = Intent(this, Interface::class.java)
+            val intent = Intent(this, Interface_driver::class.java)
             intent.putExtra("USER_ID", userId)
             startActivity(intent)
         }

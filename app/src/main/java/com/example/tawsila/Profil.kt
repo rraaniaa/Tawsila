@@ -2,13 +2,11 @@ package com.example.tawsila
 
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -99,6 +97,13 @@ class Profil : AppCompatActivity() {
 
             startActivity(intent)
         }
+        val logoutButton = findViewById<Button>(R.id.logout)
+        // Set an OnClickListener for the logout button
+        logoutButton.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+            finish() // Close the current activity to prevent going back to it from the login screen
+        }
     }
     private fun setUpBottomNavigationView() {
        val  userId = intent.getLongExtra("USER_ID", -1)
@@ -108,7 +113,7 @@ class Profil : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottom_home -> {
-                    val intent = Intent(this, Interface::class.java)
+                    val intent = Intent(this, Interface_driver::class.java)
                     intent.putExtra("USER_ID", userId)
                     startActivity(intent)
                     finish()

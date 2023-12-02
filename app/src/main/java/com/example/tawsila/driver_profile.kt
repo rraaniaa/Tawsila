@@ -215,52 +215,8 @@ class driver_profile : AppCompatActivity() {
             startActivity(intent)
         }
 
+
     }
-/*
-    // Function to refresh user data from the API
-    private fun refreshUserData(userId: Long) {
-        val getUserInfoCall: Call<UserDTO> = microserviceApi.getUserInfo(userId)
-        getUserInfoCall.enqueue(object : Callback<UserDTO> {
-            override fun onResponse(call: Call<UserDTO>, response: Response<UserDTO>) {
-                if (response.isSuccessful) {
-                    val user = response.body()
-
-                    // Update the UI with the refreshed user information
-                    fullNameEditText.setText(user?.name)
-                    usernameEditText.setText(user?.name)
-                    emailEditText.setText(user?.email)
-
-                    // Check and handle profile image
-                    val profileImage = user?.profileImage
-                    if (profileImage != null) {
-                        when (profileImage) {
-                            is ByteArray -> {
-                                val bitmap = BitmapFactory.decodeByteArray(profileImage, 0, profileImage.size)
-                                imgProfile.setImageBitmap(bitmap)
-                            }
-                            is String -> {
-                                val decodedBytes = Base64.decode(profileImage as String, Base64.DEFAULT)
-                                val bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.size)
-                                imgProfile.setImageBitmap(bitmap)
-                            }
-                            else -> {
-                                // Handle other cases if needed
-                            }
-                        }
-                    }
-                } else {
-                    Log.e("YourTag", "Failed to retrieve user information. Code: ${response.code()}")
-                    Log.e("YourTag", "Response: ${response.raw()}")
-                }
-            }
-
-            override fun onFailure(call: Call<UserDTO>, t: Throwable) {
-                Log.e("YourTag", "Network error: ${t.message}", t)
-            }
-        })
-    }
-
- */
     private fun uploadImage(userId: Long, fileUri: Uri) {
         // Check if selectedImageUri has been initialized
         if (!::selectedImageUri.isInitialized) {
