@@ -77,12 +77,7 @@
 
                 </com.google.android.material.appbar.AppBarLayout>
 
-                <!-- RecyclerView for the list of images -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="?attr/actionBarSize"/>
+
 
                 <!-- BottomAppBar -->
                 <com.google.android.material.bottomappbar.BottomAppBar

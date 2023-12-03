@@ -81,16 +81,32 @@ class profil_image : AppCompatActivity() {
         saveButton.setOnClickListener {
             // Retrieve user ID from the extras
             val userId: Long = intent.getLongExtra("USER_ID", -1)
+            val role: String? = intent.getStringExtra("name")
+
             Log.e("YourTag", "User ID: $userId")
             // Check if an image is selected
             if (imgProfile.drawable != null) {
                 // Call the API to upload the image
                 uploadImage(userId, selectedImageUri)
-                // After saving, navigate to another activity or fragment
-                val intent = Intent(this, Interface_driver::class.java)
-                // You can put extra data in the intent if needed
-                 intent.putExtra("USER_ID", userId)
-                startActivity(intent)
+                if (role == "DRIVER") {
+                    // If the profile image is not null, navigate to InterfaceActivity
+                    val intent =
+                        Intent(this, Interface_driver::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                } else if (role == "CLIENT"){
+                    // If the profile image is not null, navigate to InterfaceActivity
+                    val intent =
+                        Intent(this, Interface_client::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                } else if (role == "ADMIN"){
+                    // If the profile image is not null, navigate to InterfaceActivity
+                    val intent =
+                        Intent(this, SignUp::class.java)
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                }
             } else {
                 Toast.makeText(this, "Please select an image first", Toast.LENGTH_SHORT).show()
             }
@@ -98,10 +114,27 @@ class profil_image : AppCompatActivity() {
 
         val ignorer = findViewById<Button>(R.id.Ignorer)
         ignorer.setOnClickListener {
+            val role: String? = intent.getStringExtra("name")
             val userId: Long = intent.getLongExtra("USER_ID", -1)
-            val intent = Intent(this, Interface_driver::class.java)
-            intent.putExtra("USER_ID", userId)
-            startActivity(intent)
+            if (role == "DRIVER") {
+                // If the profile image is not null, navigate to InterfaceActivity
+                val intent =
+                    Intent(this, Interface_driver::class.java)
+                intent.putExtra("USER_ID", userId)
+                startActivity(intent)
+            } else if (role == "CLIENT"){
+                // If the profile image is not null, navigate to InterfaceActivity
+                val intent =
+                    Intent(this, Interface_client::class.java)
+                intent.putExtra("USER_ID", userId)
+                startActivity(intent)
+            } else if (role == "ADMIN"){
+                // If the profile image is not null, navigate to InterfaceActivity
+                val intent =
+                    Intent(this, SignUp::class.java)
+                intent.putExtra("USER_ID", userId)
+                startActivity(intent)
+            }
         }
 
     }

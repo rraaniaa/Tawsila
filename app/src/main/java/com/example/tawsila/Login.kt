@@ -85,6 +85,7 @@ class Login : AppCompatActivity() {
                         // Access the role information correctly
                         val roleData = data?.get("role") as? Map<String, Any>
                         val role = roleData?.get("name") as? String
+                        Log.d("Login", "Role: $role")
 
                         if (token != null && userId != null) {
                             // Make the API call to get user information
@@ -101,7 +102,8 @@ class Login : AppCompatActivity() {
                                                     Intent(this@Login, profil_image::class.java)
                                                 intent.putExtra("USER_TOKEN", token)
                                                 intent.putExtra("USER_ID", userId)
-                                                startActivity(intent)
+                                                intent.putExtra("name", role)
+                                            startActivity(intent)
 
                                         } else {
                                             if (role == "DRIVER") {
@@ -118,7 +120,7 @@ class Login : AppCompatActivity() {
                                                 intent.putExtra("USER_TOKEN", token)
                                                 intent.putExtra("USER_ID", userId)
                                                 startActivity(intent)
-                                            } else{
+                                            } else if (role == "ADMIN"){
                                                 // If the profile image is not null, navigate to InterfaceActivity
                                                 val intent =
                                                     Intent(this@Login, Interface_admin::class.java)

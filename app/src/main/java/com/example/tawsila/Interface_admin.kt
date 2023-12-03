@@ -22,21 +22,6 @@ class Interface_admin : AppCompatActivity() {
         // Call the function to set up userId and BottomNavigationView
         setUpBottomNavigationView()
 
-        drawerLayout = findViewById(R.id.drawer_layout)
-        // Sample data for testing
-        val imageList = listOf(
-            ImageItem(R.drawable.ic_launcher_foreground, "Image 1"),
-            ImageItem(R.drawable.ic_launcher_foreground, "Image 2"),
-            ImageItem(R.drawable.ic_launcher_foreground, "Image 3"),
-            ImageItem(R.drawable.ic_launcher_foreground, "Image 3"),
-            ImageItem(R.drawable.ic_launcher_foreground, "Image 3")
-        )
-
-        // Set up RecyclerView
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = Adapter(imageList)
-
     }
 
 
