@@ -78,9 +78,19 @@
                     </androidx.appcompat.widget.Toolbar>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/driverRecyclerView"
+                        android:id="@+id/recyclerViewClients"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/listeDriversButton"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/listeClientsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Liste des Clients"
+                        android:layout_gravity="center"/>
 
 
                 </com.google.android.material.appbar.AppBarLayout>
@@ -116,14 +126,4 @@
         </FrameLayout>
 
     </RelativeLayout>
-
-    <!-- NavigationView for the drawer
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/navigation_drawer_menu" /> -->
-
 </androidx.drawerlayout.widget.DrawerLayout>

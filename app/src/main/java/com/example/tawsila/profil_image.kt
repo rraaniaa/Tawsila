@@ -103,7 +103,7 @@ class profil_image : AppCompatActivity() {
                 } else if (role == "ADMIN"){
                     // If the profile image is not null, navigate to InterfaceActivity
                     val intent =
-                        Intent(this, SignUp::class.java)
+                        Intent(this, Interface_admin::class.java)
                     intent.putExtra("USER_ID", userId)
                     startActivity(intent)
                 }
@@ -131,7 +131,7 @@ class profil_image : AppCompatActivity() {
             } else if (role == "ADMIN"){
                 // If the profile image is not null, navigate to InterfaceActivity
                 val intent =
-                    Intent(this, SignUp::class.java)
+                    Intent(this, Interface_admin::class.java)
                 intent.putExtra("USER_ID", userId)
                 startActivity(intent)
             }

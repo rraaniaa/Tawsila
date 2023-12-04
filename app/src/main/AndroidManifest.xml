@@ -48,6 +48,12 @@
             android:name=".driver_trajet"
             android:exported="false" />
         <activity
+            android:name=".ListeDriversActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeClientsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
