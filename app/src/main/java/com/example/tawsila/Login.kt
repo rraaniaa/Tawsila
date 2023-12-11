@@ -144,7 +144,7 @@ class Login : AppCompatActivity() {
                                             if (role == "DRIVER") {
                                                 // If the profile image is not null, navigate to InterfaceActivity
                                                 val intent =
-                                                    Intent(this@Login, Interface_driver::class.java)
+                                                    Intent(this@Login, this::class.java)
                                                 intent.putExtra("USER_TOKEN", token)
                                                 intent.putExtra("USER_ID", userId)
                                                 startActivity(intent)

@@ -68,7 +68,7 @@ class DriverCovoiturageActivity : AppCompatActivity(), CovoiturageAdapter.OnItem
         // Add a click listener to the iconBack ImageView
         iconBack.setOnClickListener {
             val userId = intent.getLongExtra("USER_ID", -1)
-            val intent = Intent(this, Interface_client::class.java)
+            val intent = Intent(this, Interface_driver::class.java)
             intent.putExtra("USER_ID", userId)
             startActivity(intent)
         }

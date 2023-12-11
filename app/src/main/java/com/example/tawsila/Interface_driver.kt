@@ -69,6 +69,17 @@ class Interface_driver : AppCompatActivity() {
                     finish()
                     true
                 }
+
+
+                R.id.bottom_Add -> {
+                    val intent = Intent(this, driver_trajet::class.java) // Replace with the actual class name
+                    intent.putExtra("USER_ID", userId)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+
+
                 R.id.bottom_Add -> {
                     val intent = Intent(this, profil_image::class.java)
                     intent.putExtra("USER_ID", userId)
